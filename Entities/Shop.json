@@ -1,0 +1,57 @@
+{
+  "name": "Shop",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Shop name"
+    },
+    "address": {
+      "type": "string",
+      "description": "Full address"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "grocery",
+        "vegetables",
+        "supermarket",
+        "wholesale",
+        "general_store"
+      ],
+      "default": "grocery"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "owner_email": {
+      "type": "string",
+      "description": "Email of shop owner for dashboard access"
+    },
+    "is_verified": {
+      "type": "boolean",
+      "default": false
+    },
+    "rating": {
+      "type": "number",
+      "default": 0
+    },
+    "total_reviews": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "address"
+  ]
+}

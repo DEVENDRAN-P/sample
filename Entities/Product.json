@@ -1,0 +1,50 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "vegetables",
+        "fruits",
+        "dairy",
+        "grains",
+        "spices",
+        "oils",
+        "beverages",
+        "snacks",
+        "household",
+        "personal_care",
+        "other"
+      ],
+      "default": "other"
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "kg",
+        "g",
+        "l",
+        "ml",
+        "piece",
+        "dozen",
+        "pack"
+      ],
+      "default": "kg"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "is_essential": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

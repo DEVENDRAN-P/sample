@@ -1,0 +1,65 @@
+{
+  "name": "Price",
+  "type": "object",
+  "properties": {
+    "shop_id": {
+      "type": "string",
+      "description": "Reference to Shop"
+    },
+    "product_id": {
+      "type": "string",
+      "description": "Reference to Product"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Denormalized for quick display"
+    },
+    "shop_name": {
+      "type": "string",
+      "description": "Denormalized for quick display"
+    },
+    "price": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "stock_status": {
+      "type": "string",
+      "enum": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock"
+      ],
+      "default": "in_stock"
+    },
+    "is_offer": {
+      "type": "boolean",
+      "default": false
+    },
+    "offer_text": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "shopkeeper",
+        "crowdsourced"
+      ],
+      "default": "shopkeeper"
+    },
+    "verification_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of users who confirmed this price"
+    },
+    "is_verified": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "shop_id",
+    "price"
+  ]
+}
