@@ -72,7 +72,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <AuthProvider>
                 <UserProvider>
-                    <Router>
+                    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                         <AppContent />
                     </Router>
                 </UserProvider>

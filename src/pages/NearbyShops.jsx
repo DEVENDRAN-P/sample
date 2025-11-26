@@ -36,33 +36,26 @@ export default function NearbyShops() {
 
     useEffect(() => {
         const fetchNearbyShops = () => {
+            // Silently use default location without triggering geolocation permission
+            const defaultLat = 28.6139;
+            const defaultLng = 77.2090;
+            setLocation({ lat: defaultLat, lng: defaultLng });
+            setShops(generateShopsForLocation(defaultLat, defaultLng));
+            setIsLoading(false);
+
+            // Optional: Try geolocation only if user wants to update
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
                         setLocation({ lat: latitude, lng: longitude });
                         setShops(generateShopsForLocation(latitude, longitude));
-                        setIsLoading(false);
                     },
                     (error) => {
-                        console.error('Geolocation error:', error);
-                        setError('Using default location...');
-                        // Default to Delhi coordinates if geolocation fails
-                        const defaultLat = 28.6139;
-                        const defaultLng = 77.2090;
-                        setLocation({ lat: defaultLat, lng: defaultLng });
-                        setShops(generateShopsForLocation(defaultLat, defaultLng));
-                        setIsLoading(false);
+                        // Silently fail - already using default location
+                        console.log('Using default location');
                     }
                 );
-            } else {
-                setError('Geolocation is not supported by your browser');
-                // Use default location
-                const defaultLat = 28.6139;
-                const defaultLng = 77.2090;
-                setLocation({ lat: defaultLat, lng: defaultLng });
-                setShops(generateShopsForLocation(defaultLat, defaultLng));
-                setIsLoading(false);
             }
         };
 
