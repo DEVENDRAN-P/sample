@@ -39,7 +39,8 @@ export const AuthProvider = ({ children }) => {
             options.body = JSON.stringify(data);
         }
 
-        const response = await fetch(`http://localhost:5000/api${endpoint}`, options);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api${endpoint}`, options);
         const result = await response.json();
 
         if (!response.ok) {
