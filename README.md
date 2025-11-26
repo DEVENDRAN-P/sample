@@ -14,6 +14,7 @@ A modern web app to track product prices, find nearby shops, and earn rewards on
 ## Tech Stack
 
 **Frontend:**
+
 - React 18.2.0
 - Vite 4.5.14
 - React Router v6
@@ -21,6 +22,7 @@ A modern web app to track product prices, find nearby shops, and earn rewards on
 - Lucide Icons
 
 **Backend:**
+
 - Node.js + Express 4.18.2
 - SQLite3 Database
 - JWT Authentication
@@ -29,6 +31,7 @@ A modern web app to track product prices, find nearby shops, and earn rewards on
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - npm or yarn
 
@@ -82,17 +85,20 @@ npm start
 ## Features in Detail
 
 ### Authentication
+
 - Register with username, email, and password
 - Secure login with JWT tokens (7-day expiration)
 - Password hashing with bcryptjs (10 salt rounds)
 - Token persistence across browser sessions
 
 ### User Data Isolation
+
 - Each user's search history and bills stored separately
 - localStorage keys include user ID for isolation
 - Automatic cleanup on logout
 
 ### Savings Calculation
+
 - 50 points per unique search
 - 25 points per repeated search
 - 10% cashback on bill amounts
@@ -103,11 +109,13 @@ npm start
 Start both frontend and backend in separate terminals:
 
 **Terminal 1 - Frontend:**
+
 ```bash
 npm run dev
 ```
 
 **Terminal 2 - Backend:**
+
 ```bash
 cd server
 npm start
@@ -118,6 +126,7 @@ npm start
 SQLite database automatically created on first run at `server/users.db`
 
 **Tables:**
+
 - `users` - Stores user credentials and profile info
 
 ## Future Enhancements

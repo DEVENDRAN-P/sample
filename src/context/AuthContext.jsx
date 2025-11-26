@@ -98,11 +98,11 @@ export const AuthProvider = ({ children }) => {
             localStorage.removeItem(`userSearchHistory_${userId}`);
             localStorage.removeItem(`userBillHistory_${userId}`);
         }
-        
+
         // Also clear old shared keys for backward compatibility
         localStorage.removeItem('userSearchHistory');
         localStorage.removeItem('userBillHistory');
-        
+
         setUser(null);
         setToken(null);
         localStorage.removeItem('authToken');
