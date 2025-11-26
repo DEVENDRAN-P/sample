@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, LogOut, ChevronRight, Loader2 } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { useUser } from '@/context/UserContext';
-import { useAuth } from '@/context/AuthContext';
 
 export default function Profile() {
-    const navigate = useNavigate();
     const { totalSavings, searchCount } = useUser();
-    const { user, logout } = useAuth();
-    const [isLoggingOut, setIsLoggingOut] = useState(false);
-
-    const handleLogout = async () => {
-        setIsLoggingOut(true);
-        logout();
-        navigate('/login');
-    };
-
-    if (!user) return null;
-
-    // Get initials from username or full name
-    const getInitials = () => {
-        if (user.fullName) {
-            const names = user.fullName.split(' ');
-            return (names[0]?.[0] || '') + (names[1]?.[0] || '');
-        }
-        return (user.username?.[0] || '') + (user.username?.[1] || '');
-    };
 
     return (
         <div className="min-h-screen bg-slate-50 pb-24">
@@ -48,11 +27,11 @@ export default function Profile() {
                 <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-6 text-white mb-6">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold">
-                            {getInitials().toUpperCase()}
+                            LP
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold">{user.fullName || user.username}</h2>
-                            <p className="text-white/80">{user.email}</p>
+                            <h2 className="text-xl font-bold">Low Price Tracker</h2>
+                            <p className="text-white/80">Track prices • Earn rewards</p>
                         </div>
                     </div>
 
@@ -89,24 +68,13 @@ export default function Profile() {
                     ))}
                 </div>
 
-                {/* Logout */}
-                <button
-                    onClick={handleLogout}
-                    disabled={isLoggingOut}
-                    className="w-full mt-8 px-6 py-3.5 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg shadow-red-500/30 hover:shadow-red-500/40 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 justify-center border border-red-600"
-                >
-                    {isLoggingOut ? (
-                        <>
-                            <Loader2 className="w-5 h-5 animate-spin" />
-                            <span>Signing out...</span>
-                        </>
-                    ) : (
-                        <>
-                            <LogOut className="w-5 h-5" />
-                            <span>Sign Out</span>
-                        </>
-                    )}
-                </button>
+                {/* Info Section */}
+                <div className="mt-8 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+                    <p className="text-sm text-emerald-900">
+                        ✨ <span className="font-semibold">Low Price Tracker</span><br/>
+                        Find the best prices, track savings, and earn rewards!
+                    </p>
+                </div>
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ This repository uses GitHub Actions to automatically deploy to Vercel (frontend)
 4. Copy the token
 
 Then get your Project IDs:
+
 1. Go to https://vercel.com/dashboard
 2. Select your project
 3. Copy:
@@ -31,16 +32,17 @@ Then get your Project IDs:
 2. Click **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret** and add:
 
-| Secret Name | Value |
-|-------------|-------|
-| `VERCEL_TOKEN` | Your Vercel token from step 1 |
-| `VERCEL_PROJECT_ID` | Your Vercel Project ID |
-| `VERCEL_ORG_ID` | Your Vercel Org ID |
-| `RENDER_DEPLOY_HOOK` | Your Render deploy hook URL |
+| Secret Name          | Value                         |
+| -------------------- | ----------------------------- |
+| `VERCEL_TOKEN`       | Your Vercel token from step 1 |
+| `VERCEL_PROJECT_ID`  | Your Vercel Project ID        |
+| `VERCEL_ORG_ID`      | Your Vercel Org ID            |
+| `RENDER_DEPLOY_HOOK` | Your Render deploy hook URL   |
 
 ### 4. Test Auto-Deploy
 
 Make a small change and push:
+
 ```bash
 echo "# Test" >> README.md
 git add .
@@ -55,11 +57,13 @@ Go to **Actions** tab in GitHub to watch the deployment happen automatically!
 ## What Gets Deployed
 
 ✅ **Frontend** (Vercel):
+
 - React app
 - Automatically rebuilds and deploys
 - URL: `https://lowpricetracker.vercel.app`
 
 ✅ **Backend** (Render):
+
 - Express API server
 - Database (SQLite)
 - URL: Set in Vercel env var
@@ -81,11 +85,13 @@ vercel --prod
 ## Troubleshooting
 
 **Deployment failed?**
+
 - Check Actions tab → View logs
 - Verify all secrets are set correctly
 - Ensure both services are connected
 
 **Still getting "Failed to fetch"?**
+
 1. Verify `VITE_API_URL` environment variable in Vercel
 2. Check backend is deployed on Render
 3. Test API directly: `https://your-backend.onrender.com/api/health`
