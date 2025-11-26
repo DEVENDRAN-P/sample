@@ -39,15 +39,27 @@ export const AuthProvider = ({ children }) => {
             options.body = JSON.stringify(data);
         }
 
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        const response = await fetch(`${apiUrl}/api${endpoint}`, options);
-        const result = await response.json();
+        try {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+            console.log('API Call to:', `${apiUrl}/api${endpoint}`);
+            
+            const response = await fetch(`${apiUrl}/api${endpoint}`, options);
+            
+            if (!response.ok && response.status === 0) {
+                throw new Error('Cannot reach API server. Please ensure backend is running.');
+            }
+            
+            const result = await response.json();
 
-        if (!response.ok) {
-            throw new Error(result.error || 'API call failed');
+            if (!response.ok) {
+                throw new Error(result.error || `API error: ${response.status}`);
+            }
+
+            return result;
+        } catch (err) {
+            console.error('API Error:', err.message);
+            throw err;
         }
-
-        return result;
     }, [token]);
 
     const register = useCallback(async (username, email, password, fullName) => {
