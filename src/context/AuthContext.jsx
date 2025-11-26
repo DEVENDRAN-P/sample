@@ -42,13 +42,13 @@ export const AuthProvider = ({ children }) => {
         try {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
             console.log('API Call to:', `${apiUrl}/api${endpoint}`);
-            
+
             const response = await fetch(`${apiUrl}/api${endpoint}`, options);
-            
+
             if (!response.ok && response.status === 0) {
                 throw new Error('Cannot reach API server. Please ensure backend is running.');
             }
-            
+
             const result = await response.json();
 
             if (!response.ok) {

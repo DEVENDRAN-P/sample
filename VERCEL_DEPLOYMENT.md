@@ -12,11 +12,12 @@
 ### Step 2: Set Environment Variables in Vercel
 
 In Vercel Dashboard:
+
 1. Go to your project → **Settings** → **Environment Variables**
 2. Add these variables:
 
-| Key | Value | Notes |
-|-----|-------|-------|
+| Key            | Value                          | Notes                                |
+| -------------- | ------------------------------ | ------------------------------------ |
 | `VITE_API_URL` | `https://your-backend-url.com` | Will be set after backend deployment |
 
 ### Step 3: Deploy
@@ -35,6 +36,7 @@ In Vercel Dashboard:
 3. Connect your GitHub repo
 4. Select `main` branch
 5. Configure:
+
    - **Name**: `low-price-tracker-server`
    - **Environment**: `Node`
    - **Build Command**: `cd server && npm install`
@@ -42,6 +44,7 @@ In Vercel Dashboard:
    - **Region**: Choose closest to you
 
 6. Add Environment Variables:
+
    - Key: `FRONTEND_URL`
    - Value: Your Vercel frontend URL (e.g., `https://your-app.vercel.app`)
 
@@ -67,6 +70,7 @@ In Vercel Dashboard:
 4. Vercel will auto-redeploy
 
 ### Example URLs:
+
 - Frontend: `https://sample-vercel.app`
 - Backend: `https://low-price-tracker-server-abc123.onrender.com`
 
@@ -84,16 +88,19 @@ In Vercel Dashboard:
 ## Troubleshooting
 
 ### "Failed to fetch" Error
+
 - Check `VITE_API_URL` environment variable in Vercel
 - Ensure backend server is running and deployed
 - Check CORS settings in backend (should allow your Vercel URL)
 
 ### Backend Not Responding
+
 - Verify backend deployment succeeded
 - Check backend URL in environment variable
 - Test API directly: `https://your-backend.app/api/health`
 
 ### Database Errors
+
 - Render/Railway create new SQLite database on first run (auto-initialized)
 - Check backend logs in deployment dashboard
 
